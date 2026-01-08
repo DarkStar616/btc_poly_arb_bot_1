@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Polymarket Gamma API (Partial)
+  version: 1.0.0
+  description: Subset of Polymarket Gamma API used for market discovery.
+servers:
+  - url: https://gamma-api.polymarket.com
+paths:
+  /markets:
+    get:
+      summary: Search for markets
+      parameters:
+        - name: query
+          in: query
+          schema:
+            type: string
+        - name: active
+          in: query
+          schema:
+            type: boolean
+        - name: order
+          in: query
+          schema:
+            type: string
+        - name: ascending
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List of markets
+  /events:
+    get:
+      summary: Search for events
+      parameters:
+        - name: slug
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event details

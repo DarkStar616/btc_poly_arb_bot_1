@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Polymarket CLOB API (Partial)
+  version: 1.0.0
+  description: Subset of Polymarket CLOB API used for trading and orderbooks.
+servers:
+  - url: https://clob.polymarket.com
+paths:
+  /book:
+    get:
+      summary: Get orderbook snapshot
+      parameters:
+        - name: token_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Orderbook snapshot
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bids:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+                  asks:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+components:
+  schemas:
+    WsPayload:
+      type: object
+      properties:
+        type:
+          type: string
+        assets_ids:
+          type: array
+          items:
+            type: string

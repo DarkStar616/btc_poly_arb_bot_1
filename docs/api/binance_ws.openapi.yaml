@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  title: Binance WebSocket (Partial)
+  version: 1.0.0
+  description: Subset of Binance WebSocket streams used for real-time prices.
+servers:
+  - url: wss://stream.binance.com:9443/ws
+paths:
+  /{symbol}@aggTrade:
+    get:
+      summary: Aggregate Trade Stream
+      description: The Aggregate Trade Stream pushes trade information that is aggregated for a single taker order.
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: aggTrade message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  e: { type: string, example: "aggTrade" }
+                  E: { type: integer, example: 123456789 }
+                  s: { type: string, example: "BTCUSDT" }
+                  p: { type: string, example: "0.001" }
+                  q: { type: string, example: "100" }
+                  m: { type: boolean, example: true }

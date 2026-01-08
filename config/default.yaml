@@ -1,0 +1,41 @@
+system:
+  log_dir: "logs"
+  backtest_mode: "paper_live"
+  log_level: "INFO"
+
+strategy:
+  initial_capital: 10000
+  risk_fraction: 0.02
+  max_trade_usd: 5000
+  edge_entry_min: 0.071
+  edge_exit_min: 0.020
+  tp_bps: 120
+  sl_bps: 80
+  max_hold_sec: 180
+  max_spread_bps: 35
+  max_slippage_bps: 100
+  taker_fee_bps: 100
+
+market:
+  poly_query: "Bitcoin Up or Down"
+  duration_min: 15
+  binance_symbol: "btcusdt"
+
+endpoints:
+  binance_ws: "wss://stream.binance.com:9443/ws"
+  poly_ws: "wss://ws-subscriptions-clob.polymarket.com/ws/market"
+  clob_rest: "https://clob.polymarket.com"
+  gamma_api: "https://gamma-api.polymarket.com"
+
+health:
+  poly_max_age_ms: 5000
+  binance_max_age_ms: 2000
+  book_resync_interval_sec: 60
+  desync_tolerance_bps: 50
+  snapshot_drift_bps: 100
+
+auth:
+  # Load from env
+  api_key: "${POLY_API_KEY}"
+  secret: "${POLY_SECRET}"
+  passphrase: "${POLY_PASSPHRASE}"

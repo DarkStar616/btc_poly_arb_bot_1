@@ -1,0 +1,10 @@
+numpy
+pandas
+pydantic
+python-dotenv
+requests
+websockets
+rich
+click
+pytest
+sortedcontainers
